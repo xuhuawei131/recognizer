@@ -3,6 +3,7 @@ package wpam.recognizer;
 import java.util.concurrent.BlockingQueue;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 public class RecognizerTask extends AsyncTask<Void, Object, Void> {
 	
@@ -26,8 +27,10 @@ public class RecognizerTask extends AsyncTask<Void, Object, Void> {
 		while(controller.isStarted())
 		{
 			try {
+				Log.e("xhw","RecognizerTask take before ");
 				DataBlock dataBlock = blockingQueue.take();
-								
+				Log.v("xhw","RecognizerTask take after ");
+
 				Spectrum spectrum = dataBlock.FFT();
 				
 				spectrum.normalize();				

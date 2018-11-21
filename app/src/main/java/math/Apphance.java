@@ -1,4 +1,4 @@
-package util;
+package math;
 
 import android.app.Application;
 import android.content.ComponentName;
@@ -167,7 +167,7 @@ public class Apphance {
         private ApphanceServiceInterface serviceInterface = null;
         private ApphanceCallbackInterface callback = new ApphanceCallbackInterface.Stub() {
             public void requestExit() {
-                ApphanceServiceConnection.this.exitHandler.sendEmptyMessage(1);
+                Apphance.ApphanceServiceConnection.this.exitHandler.sendEmptyMessage(1);
             }
         };
         private Handler exitHandler = new Handler() {

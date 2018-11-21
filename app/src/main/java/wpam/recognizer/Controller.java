@@ -1,5 +1,7 @@
 package wpam.recognizer;
 
+import android.os.AsyncTask;
+
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -22,7 +24,7 @@ public class Controller
 
 	public void changeState() 
 	{
-		if (started == false)
+		if (!started)
 		{
 			
 			lastValue = ' ';
@@ -34,9 +36,11 @@ public class Controller
 			recordTask = new RecordTask(this,blockingQueue);
 			
 			recognizerTask = new RecognizerTask(this,blockingQueue);
-			
-			recordTask.execute();
-			recognizerTask.execute();
+
+			recordTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+			recognizerTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+
+
 			
 			started = true;
 		} else {

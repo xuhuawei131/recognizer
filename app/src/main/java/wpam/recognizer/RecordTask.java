@@ -6,6 +6,7 @@ import math.FFT;
 import android.media.AudioFormat;
 import android.media.AudioRecord;
 import android.os.AsyncTask;
+import android.util.Log;
 
 public class RecordTask extends AsyncTask<Void, Object, Void> {
 	
@@ -42,7 +43,7 @@ public class RecordTask extends AsyncTask<Void, Object, Void> {
 				int bufferReadSize = audioRecord.read(buffer, 0, blockSize);
 				
 				DataBlock dataBlock = new DataBlock(buffer, blockSize, bufferReadSize);
-				
+				Log.v("xhw","RecordTask put before ");
 				blockingQueue.put(dataBlock);
 			}
 			
