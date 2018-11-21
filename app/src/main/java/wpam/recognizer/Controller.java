@@ -84,8 +84,4 @@ public class Controller
 		lastValue = key;
 	}
 	
-	public void debug(String text) 
-	{
-		mainActivity.setText(text);
-	}
 }
